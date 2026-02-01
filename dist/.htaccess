@@ -1,0 +1,75 @@
+# Enable GZIP compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/x-font-ttf
+  AddOutputFilterByType DEFLATE font/opentype
+</IfModule>
+
+# Leverage Browser Caching
+<IfModule mod_expires.c>
+  ExpiresActive On
+  
+  # Default
+  ExpiresDefault "access plus 2 days"
+  
+  # Images
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  
+  # CSS and JavaScript
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  
+  # Fonts
+  ExpiresByType font/ttf "access plus 1 year"
+  ExpiresByType font/otf "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType application/font-woff "access plus 1 year"
+  
+  # HTML
+  ExpiresByType text/html "access plus 2 days"
+</IfModule>
+
+# Disable directory listing
+Options -Indexes
+
+# Security Headers (Allow search engines to read metadata)
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  
+  # Allow search engine crawlers full access
+  Header set Access-Control-Allow-Origin "*"
+  
+  # Content Security Policy (permissive for search engines)
+  Header set Content-Security-Policy "default-src 'self' https:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com"
+</IfModule>
+
+# Redirect www to non-www (optional - adjust as needed)
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+#   RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+# </IfModule>
+
+# Enable gzip compression for SVG files
+AddType "image/svg+xml" svg svgz
+AddEncoding gzip svgz

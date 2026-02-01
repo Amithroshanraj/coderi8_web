@@ -1,0 +1,34 @@
+# Robots.txt for Coderi8
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+Disallow: /*.json$
+Disallow: /api/
+
+# Crawl delay (in seconds)
+Crawl-delay: 0
+
+# Sitemap location
+Sitemap: https://coderi8.com/sitemap.xml
+
+# Specific rules for Google - ALLOW ALL
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Specific rules for Bing - ALLOW ALL
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+# Block bad bots
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Allow: /
+Crawl-delay: 10
+
