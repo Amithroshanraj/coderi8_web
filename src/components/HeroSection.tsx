@@ -75,8 +75,8 @@ export const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className=" text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto  "
           >
-            Learn Python, Java, Web Development, Full Stack & Data Science online with structured 6-month courses at just{" "}
-            <span className="text-primary font-semibold">₹999 per month</span>.
+            Learn Python, Java, Web Development, Full Stack & Data Science online with structured 6-month courses starting at{" "}
+            <span className="text-primary font-semibold">₹1499 per month</span>.
           </motion.p>
 
           {/* CTA Buttons */}

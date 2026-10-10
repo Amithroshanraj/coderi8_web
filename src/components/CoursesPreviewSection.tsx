@@ -8,7 +8,7 @@ const courses = [
     duration: "6 Months",
     mode: "Online",
     level: "Beginner to Intermediate",
-    price: "₹999 per month",
+    price: "₹1499 per month",
     features: ["Python fundamentals", "Programming logic", "Hands-on practice", "Mini projects"],
   },
   {

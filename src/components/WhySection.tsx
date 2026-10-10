@@ -31,7 +31,7 @@ const features = [
   {
     icon: DollarSign,
     title: "Affordable Pricing",
-    description: "Only ₹999 per month with flexible learning.",
+    description: "Affordable monthly pricing with flexible learning.",
   },
 ];
 
