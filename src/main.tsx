@@ -10,6 +10,7 @@ import Courses from "./pages/Courses";
 import Internship from "./pages/Internship";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
+import WebinarRegistration from "./pages/WebinarRegistration";
 import NotFound from "./pages/NotFound";
 import "./index.css";
 
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
 				{ path: "internship", element: <Internship /> },
 				{ path: "projects", element: <Projects /> },
 				{ path: "contact", element: <Contact /> },
+				{ path: "webinar-registration", element: <WebinarRegistration /> },
 				{ path: "*", element: <NotFound /> },
 			],
 		},

@@ -50,6 +50,27 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
+## Webinar registration (test deployment)
+
+The `/webinar-registration` route posts to the Netlify Function at
+`/.netlify/functions/webinar-register`. The function validates and normalizes
+submissions, signs its server-to-server request to Google Apps Script, and only
+returns the selected WhatsApp group after Apps Script confirms the saved
+registration.
+
+Use only the isolated test Apps Script deployment and a copy of the spreadsheet
+when testing. Configure `WEBINAR_APPS_SCRIPT_URL`,
+`WEBINAR_IDEMPOTENCY_SECRET`, and `WEBINAR_APPS_SCRIPT_HMAC_SECRET` as
+server-side Netlify environment variables. The Apps Script Script Properties
+must contain the matching idempotency secret, the matching HMAC secret under
+`WEBINAR_HMAC_SECRET`, and the test spreadsheet ID under
+`WEBINAR_SPREADSHEET_ID`. Never use `VITE_`-prefixed variables for secrets or
+commit actual secret values.
+
+Run the mocked registration tests with `npm test`; they do not contact Apps
+Script or write to a spreadsheet. The Netlify runtime is set to Node 22.12.0
+to meet the minimum runtime required by the Netlify Blobs packages.
+
 ## How can I deploy this project?
 
 This project can be deployed to various platforms including Vercel, Netlify, or Cloudflare Pages.
