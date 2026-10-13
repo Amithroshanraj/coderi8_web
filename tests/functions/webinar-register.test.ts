@@ -3,8 +3,8 @@ import { createHmac } from "node:crypto";
 import {
   createRegistrationHandler,
   postToAppsScript,
-} from "./webinar-register";
-import { webinarGroups } from "./_shared/webinarGroups";
+} from "../../netlify/functions/webinar-register";
+import { webinarGroups } from "../../netlify/functions/_shared/webinarGroups";
 
 const environment = {
   WEBINAR_APPS_SCRIPT_URL: "https://script.google.com/macros/s/testDeploymentId/exec",
